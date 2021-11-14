@@ -1,9 +1,9 @@
 var dayEl = document.querySelector("#currentDay")
 var inputContainerEl = document.querySelector(".text-box");
 
-var workDayHours = [];
-
 var textInput = "";
+
+console.log($(".hour"));
 
 var displayCurrentDay = function () {
     
@@ -17,49 +17,99 @@ var createText = function () {
         // this creates a dynamic user input box that blurs when clicked out of
 
     textInput = $(".text-box").attr("contenteditable", "true");
-
    
 };
     
 var colorCode = function () {
 
-    
-
     var currentHour = moment().hour();
+
+    console.log(currentHour);
     
-    for (var i = 9; i <= 19; i++ ) {        
- 
-     workDayHours[i] = i;
- 
-         if ( workDayHours[i] < currentHour ) {
- 
-             $(this).closest(".row").find("div.text-box").css("background-color", "gray");
-     
-            var time = document.getElementsByClassName("time-of-day")
 
-         }
- 
- 
-     // if work day hours are equal to the current hour, background in red
- 
-         else if ( currentHour === workDayHours[i] ) {
- 
-             $(this).closest(".row").find("div.text-box").css("background-color", "red");
- 
-         }
- 
- 
-     // if work day hours are greater than current hour, background is green
- 
-         else if ( workDayHours[i] > currentHour ) {
- 
-             $(this).closest(".row").find("div.text-box").css("background-color", "green");
- 
- 
-         }
+    for (var i = 0; i < $(".hour").length; i++) {   
+        
+        var timeOfRow = $(".hour")[i].innerHTML;
+
+        
+
+        var newTime = parseInt(timeOfRow);
+
+        console.log( newTime );
+
+        
+        if ( newTime < 9) {
+
+            newTime + 12;
+
+            // if work day hours are less than current hour, background is gray
+
+            if ( newTime < currentHour ) {
+    
+                $(".hour").closest(".row").find(".text-box").addClass("past");
+        
+                console.log($(".hour").closest(".row").find("div.text-box"));
+
+            }
+    
+    
+        // if work day hours are equal to the current hour, background in red
+    
+            else if ( currentHour === newTime ) {
+    
+                $(".hour").closest(".row").find(".text-box").addClass("present");
+    
+                console.log($(".hour").closest(".row").find("div.text-box"));
+            }
+    
+    
+        // if work day hours are greater than current hour, background is green
+    
+            else if ( newTime > currentHour ) {
+    
+                $(".hour").closest(".row").find(".text-box").addClass("future");
+    
+                console.log($(".hour").closest(".row").find("div.text-box"));
+    
+            }
 
 
+        }
 
+        else{
+
+            // if work day hours are less than current hour, background is gray
+
+            if ( newTime < currentHour ) {
+    
+                $(".hour").closest(".row").find(".text-box").addClass("past");
+        
+                console.log("this one worked");
+
+            }
+    
+    
+        // if work day hours are equal to the current hour, background in red
+    
+            else if ( currentHour === newTime ) {
+    
+                $(".hour").closest(".row").find(".text-box").addClass("present");
+    
+                console.log($("blue"));
+            }
+    
+    
+        // if work day hours are greater than current hour, background is green
+    
+            else if ( newTime > currentHour ) {
+    
+                $(".hour").closest(".row").find(".text-box").addClass("future");
+    
+                console.log($("red"));
+    
+            }
+
+        }
 
 
 
@@ -97,14 +147,9 @@ var colorCode = function () {
 
 };
 
-
-var saveButton = function () {
-
-};
-
 var saveButtonHandler = function () {
 
-    localStorage.setItem("textInput");
+    localStorage.setItem("textInput", JSON.stringify(textInput));
 
 };
 
@@ -112,29 +157,10 @@ var loadPage = function () {
 
     document.getElementById(".text-box").innerHTML = localStorage.getItem("textInput");
 
+    // textInput = JSON.parse(localStorage.getItem("textInput"));
+
 };
 
-
-
-
-
-// var auditTask = function(taskEl) {
-
-//         // get date from task element
-//         var date = $(taskEl).find(".time-of-day").text().trim();
-      
-//         // convert to moment object at 5:00pm
-//         var time = moment(date, "L").set("hour", i);
-      
-//         // remove any old classes from element
-//         $(taskEl).removeClass("danger");
-      
-//         // apply new class if task is near/over due date
-//         if (moment().isAfter(time)) {
-//           $(taskEl).addClass("danger");
-//         }
-
-//   };
 
 var main = function () {
 
@@ -148,11 +174,4 @@ var main = function () {
 
 main();
 
-saveButton.addEventListener("click", saveButtonHandler);
-
-
-// look in jquery docs
-// event 
-// find
-// closest
-// dom tree traversal
+$(".saveBtn").click(saveButtonHandler);
