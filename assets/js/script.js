@@ -163,35 +163,6 @@ var saveButtonHandler = function () {
 
 };
 
-
-var loadPage = function () {
-
-   
-    // set text of text box to be what was just retrieved
-
-
-    // for (var i = 0; i < localStorage.length; i++) {
-
-    //     var loadInfo = localStorage.getItem('content' + i);
-
-    //     if (loadInfo){
-
-    //         saveMe[i].textContent = loadInfo;
-
-    //     } 
-
-    // }
-
-
-
-    // if ( localStorage.getItem('content') ) {
-    //     var loadInfo = document.getElementById('[contenteditable]');
-    //     loadInfo.innerHTML = localStorage.getItem('[contenteditable]');
-    //   }
-
-};
-
-
 var main = function () {
 
     displayCurrentDay();

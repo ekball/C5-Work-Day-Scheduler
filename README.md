@@ -1,4 +1,3 @@
-# Starter Code
 # Challenge #3 - Work Day Scheduler
 
 ## Description
