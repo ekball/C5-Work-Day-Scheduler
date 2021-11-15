@@ -6,6 +6,7 @@ var currentBoxText = [];
 var currentBox = [];
 
 
+
 // function to display current time on main page
 var displayCurrentDay = function () {
     
@@ -22,16 +23,18 @@ $(".text-box").attr("contenteditable", "true");
 
 
     // saves the content of the particular input area and stores it to a variable 'text'
-    var textAt9 = $("#9").textContent;
-    var textAt10 = $("#10").textContent;
-    var textAt11 = $("#11").textContent;
-    var textAt12 = $("#12").textContent;
-    var textAt13 = $("#13").textContent;
-    var textAt14 = $("#14").textContent;
-    var textAt15 = $("#15").textContent;
-    var textAt16 = $("#16").textContent;
-    var textAt17 = $("#17").textContent;
-    var textAt18 = $("#18").textContent;
+
+    // for (var i = 0;)
+    // var textAt9 = $("#9").textContent;
+    // var textAt10 = $("#10").textContent;
+    // var textAt11 = $("#11").textContent;
+    // var textAt12 = $("#12").textContent;
+    // var textAt13 = $("#13").textContent;
+    // var textAt14 = $("#14").textContent;
+    // var textAt15 = $("#15").textContent;
+    // var textAt16 = $("#16").textContent;
+    // var textAt17 = $("#17").textContent;
+    // var textAt18 = $("#18").textContent;
 
 
 
@@ -133,31 +136,31 @@ var colorCode = function () {
 var saveButtonHandler = function () {
 
     // find the first content editable field next to the particular save button
-    // var savedInfo = document.querySelector('[contenteditable]');
+    var savedInfo = document.querySelector('[contenteditable]');
 
     // // save the value of the input to local storage
-    // localStorage.setItem('content', savedInfo.textContent);
+    localStorage.setItem('content', savedInfo.textContent);
 
 
-    for (var i = 0; i < $('.hours').length; i++) {
+    // for (var i = 0; i < $('.hours').length; i++) {
                         
-        currentBox[i] = document.getElementById(i+8);
+    //     currentBox[i] = document.getElementById(i+8);
 
-        currentBoxText[i] = $(this).closest(".text-box").textContent;
+    //     currentBoxText[i] = $(this).closest(".text-box").textContent;
+    //       console.log(this);
 
-        localStorage.setItem('currentBox' + i, currentBoxText[i]);
+    //     localStorage.setItem('currentBox' + i, currentBoxText[i]);
 
+    // //     // set variable to retrieve what is stored
+    // //     var loadInfo = localStorage.getItem('content' + i);
 
-        // set variable to retrieve what is stored
-        var loadInfo = localStorage.getItem('content' + i);
+    //     // if there is info present, set text of text box to be what was just retrieved
+    //     // if (loadInfo){
 
-        // if there is info present, set text of text box to be what was just retrieved
-        if (loadInfo){
+    //     //     currentBoxText[i] = loadInfo;
 
-            currentBoxText[i] = loadInfo;
-
-        };
-    };
+    //     // };
+    // };
 
 
 
